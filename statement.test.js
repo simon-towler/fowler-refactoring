@@ -25,8 +25,8 @@ var plays = {
 
 console.log(statement(invoice, plays));
 
-function amountFor(perf) {
-	const play = plays[perf.playID];
+function amountFor(perf, play) {
+
 	let thisAmount = 0;
 
 	switch (play.type) {
@@ -62,10 +62,7 @@ function statement (invoice, plays) {
 
 	for (let perf of invoice.performances) {
 		const play = plays[perf.playID];
-		let thisAmount = 0;
-
-
-		thisAmount = amountFor(perf);
+		let thisAmount = amountFor(perf, play);
 
 		//add volume credits
 		volumeCredits += Math.max(perf.audience - 30, 0);
